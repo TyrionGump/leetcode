@@ -27,22 +27,21 @@ class Solution(object):
         #         end = max(end, intervals[i][1])
         # res.append([start, end])
         # return res
-        '''
-        if not intervals or len(intervals) == 1:
-            return intervals
         
-        intervals = sorted(intervals, key=lambda x: x[0])
         
-        mergedIntervals = []
-        
-        for interval in intervals:
-            if not mergedIntervals or interval[0] > mergedIntervals[-1][1]:
-                mergedIntervals.append(interval)
+        if not intervals:
+            return None
+
+        new_intervals = sorted(intervals, key=lambda x: x[0])
+        res = [new_intervals[0]]
+        for i in range(1, len(new_intervals)):
+            if res[-1][1] >= new_intervals[i][0]:
+                res[-1][1] = max(res[-1][1], new_intervals[i][1])
             else:
-                mergedIntervals[-1][1] = max(interval[1], mergedIntervals[-1][1])
-        
-        return mergedIntervals
-        '''
+                res.append(new_intervals[i])
+        return res
+
+
 
         
                  

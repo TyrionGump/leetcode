@@ -44,6 +44,10 @@ class Solution(object):
         res.append([start, end])
         res += intervals[j:]
         return res
+
+        start = intervals[0][0]
+
+
             
 
 
