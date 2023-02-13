@@ -12,10 +12,15 @@ class Solution {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> resMap = new HashMap<>();
         
-        for (int i=0; i < num.length() - 1; i++) {
-            resMap.computeIfAbsent(target - nums[i], key -> i);
-            
+        for (int i = nums.length - 1; i >= 0; i--) {
+            Integer secondNumIdx = resMap.get(target - nums[i]);
+            if (secondNumIdx != null) {
+                return new int[]{i, secondNumIdx};
+            } else {
+                resMap.put(nums[i], i);
+            }
         }
+        return null;
     }
 }
 // @lc code=end
