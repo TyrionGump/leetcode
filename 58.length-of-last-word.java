@@ -14,9 +14,19 @@ class Solution {
         int lastWordEndIndex = s.length() - 1;
         for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) == ' ') {
-                if ()
+                if (lastWordEndIndex - i != 0) {
+                    return lastWordEndIndex - i;
+                } else {
+                    lastWordEndIndex -= 1;
+                }
             }
         }
+
+        if (s.charAt(0) != ' ') {
+            return lastWordEndIndex + 1;
+        }
+
+        return 0;
     }
 }
 // @lc code=end
