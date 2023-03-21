@@ -10,30 +10,22 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        # # First Idea: Merge Sort
-        # res = []
-        # nums1[m:] = nums2
+
+        # Compare the greatest num in each list
+        l_tail = m - 1
+        r_tail = n - 1
+
+        while l_tail >= 0 and r_tail >= 0:
+            if (nums1[l_tail] > nums2[r_tail]):
+                nums1[l_tail + r_tail + 1] = nums1[l_tail]
+                l_tail -= 1
+            else:
+                nums1[l_tail + r_tail + 1] = nums2[r_tail]
+                r_tail -= 1
         
-        # i = 0
-        # j = m
-        # while i <= m-1 and j <= m+n-1:
-        #     if nums1[i] > nums1[j]:
-        #         res.append(nums1[j])
-        #         j += 1
-        #     else:
-        #         res.append(nums1[i])
-        #         i += 1
-        
-        # if i <= m-1:
-        #     res.extend(nums1[i:m])
-        
-        # if j <= m+n-1:
-        #     res.extend(nums1[j:])
-        
-        # nums1[:] = res
-        # Solution in discussion
-        # nums1[m:] = nums2
-        # nums1.sort()
+        if r_tail >= 0:
+            nums1[:r_tail + 1] = nums2[:r_tail + 1]
+
 
 
         
