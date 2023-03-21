@@ -32,8 +32,10 @@ class Solution:
         
         # nums1[:] = res
         # Solution in discussion
-        nums1[m:] = nums2
-        nums1.sort()
+        # nums1[m:] = nums2
+        # nums1.sort()
+
+
         
 
 
