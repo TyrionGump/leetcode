@@ -13,8 +13,18 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return self.isSymmetric(root.left).val == self.isSymmetric(root.right).val
+        return self.check_left_right(root, root)
+    
+    def check_left_right(self, left, right):
+
+        if not left and not right:
+            return True
+        
+        if not left or not right:
+            return False
+        
+        return left.val == right.val and self.check_left_right(left.left, right.right) and self.check_left_right(left.right, right.left)
+        
 
         
 # @lc code=end
