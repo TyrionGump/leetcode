@@ -11,6 +11,14 @@ class Solution(object):
         :type columnNumber: int
         :rtype: str
         """
+        left = columnNumber
+        res = ""
+
+        while left > 0:
+            left, reminder = divmod(left - 1, 26)
+            res = chr(65 + reminder) + res
+        return res
+                 
         
 # @lc code=end
 
