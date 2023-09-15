@@ -15,26 +15,29 @@ class Solution:
         if not head:
             return None
         
-        lower_dummy = ListNode()
-        upper_dummy = ListNode()
-
-        lower_pointer = lower_dummy
-        upper_pointer = upper_dummy
-
+        dummy = ListNode()
+        dummy.next = head
+        prev = dummy
+        
         while head:
             if head.val < x:
-                lower_pointer.next = head
-                lower_pointer = lower_pointer.next
+                prev = head
+                head = head.next
             else:
-                upper_pointer.next = head
-                upper_pointer = upper_pointer.next
-            head = head.next
-        
-        upper_pointer.next = None
-        lower_pointer.next = upper_dummy.next
+                while head.next and head.next.val >= x:
+                    head = head.next
 
-        return lower_dummy.next
-            
+                # If a node with value < x is found, move it after 'prev'
+                if head.next:  # means head.next.val < x
+                    temp = head.next
+                    head.next = temp.next
+                    temp.next = prev.next
+                    prev.next = temp
+                    prev = temp
+                else:
+                    break
+
+        return dummy.next
 
 
         
